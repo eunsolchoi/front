@@ -15,14 +15,14 @@
 
     <header class="header">
         <div class="container">
-            <h1><a href="#intro">🍅</a></h1>
+            <h1><a href="#intro">〄</a></h1>
             <nav class="nav" aria-label="메인 페이지 내비게이션">
                 <ul>
                     <li class="dropdown">
                         <a href="main.html#about" class="dropbtn">About</a>
                         <div class="dropdown-content">
                             <a href="main.html#about">About Me (본문)</a> 
-                            <a href="이력서 및 자기소개서.docx" target="_blank">이력서 및 자기소개서 download</a>
+                            <a href="이력서 및 자기소개서 다운.docx" target="_blank">이력서 및 자기소개서 download</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -35,26 +35,30 @@
                     <li><a href="main.html#research">Research Paper</a></li>
                     <li><a href="main.html#contact">Contact</a></li>
                     <li>
-                        <button id="theme-toggle" class="nav-pill-btn" aria-label="색상전환">
-                            <i class="fas fa-leaf"></i> GREEN
+                        <button id="theme-toggle" class="nav-pill-btn" aria-label="다크모드">
+                            <i class="fas fa-leaf"></i> black
                         </button>
                     </li>
                 </ul>
             </nav>
-        </div>
+        </div>.
     </header>
-
-    <section id="intro" class="hero hero-v1">
-    <div class="container">
-        <p class="subtitle"> 세상의 흐름을 파악하고 기회를 창출하는</p>
+<section id="intro" class="hero hero-v1">
+<div class="container">
+    <p class="subtitle"> 세상의 흐름을 파악하고 기회를 창출하는</p>
+    
+    <h2>Developer <span class="highlight-name">최은솔</span>입니다.</h2>
+    
+    <div class="cta-group">
+        <a href="#portfolio" class="cta-button cta-primary">프로젝트 보러가기 →</a>
         
-        <h2>Developer <span class="highlight-name">최은솔</span>입니다.</h2>
+        <button id="print-page-btn" class="cta-button cta-secondary">
+            이력서 인쇄 <i class="fas fa-print"></i>
+        </button>
         
-        <div class="cta-group">
-            <a href="#portfolio" class="cta-button cta-primary">프로젝트 보러가기 →</a>
-            </div>
-    </div>
-    </section>
+        </div>
+</div>
+</section>
     
     <section id="about" class="section about-section">
         <div class="container">
@@ -186,11 +190,11 @@
     const maxTomatoes = 13; 
     let tomatoes = [];
 
-    // 토마토 이미지 로드 (경로 확인 필요)
+    // 달 이미지 로드 (경로 확인 필요)
     const tomatoImg = new Image();
-    tomatoImg.src = './image/toma.png'; 
+    tomatoImg.src = './image/moon.png'; 
 
-    // 토마토 객체 생성자 (애니메이션 로직 유지)
+    // 달 객체 생성자 (애니메이션 로직 유지)
     function Tomato() {
         this.size = Math.random() * 87 + 65; 
         this.x = Math.random() * (canvas.width - this.size);
@@ -199,10 +203,10 @@
         this.speedY = (Math.random() - 0.5) * 3; 
         this.rotation = Math.random() * Math.PI * 2; 
         this.rotationSpeed = (Math.random() - 0.5) * 0.005;
-        this.opacity = Math.random() * 0.05 + 3; 
+        this.opacity = Math.random() * 0.05 + 0.5; 
     }
 
-    // 토마토 그리기 (애니메이션 로직 유지)
+    // 달 그리기 (애니메이션 로직 유지)
     Tomato.prototype.draw = function() {
         ctx.save();
         ctx.globalAlpha = this.opacity; 
@@ -212,7 +216,7 @@
         ctx.restore();
     };
 
-    // 토마토 업데이트 (애니메이션 로직 유지)
+    // 달 업데이트 (애니메이션 로직 유지)
     Tomato.prototype.update = function() {
         this.x += this.speedX;
         this.y += this.speedY;
@@ -248,18 +252,17 @@
     // 💡 3. 색상 전환 기능 구현 및 LocalStorage 처리
     
     function applyColorMode(mode) {
-       
-        body.classList.remove('color-mode-red', 'color-mode-green');
-        
-        if (mode === 'green') {
-            body.classList.add('color-mode-green');
-            
-            themeToggle.innerHTML = '<i class="fas fa-undo"></i> RED'; 
-        } else { 
-            body.classList.add('color-mode-red');
-            themeToggle.innerHTML = '<i class="fas fa-leaf"></i> GREEN'; 
-        }
-    }
+
+    body.classList.remove('color-mode-red', 'color-mode-green');
+
+    if (mode === 'green') {
+         body.classList.add('color-mode-green');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i> LIGHT'; 
+     } else { 
+     body.classList.add('color-mode-red');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i> DARK'; 
+     }
+}
 
     const savedColorMode = localStorage.getItem('color-mode');
     applyColorMode(savedColorMode || 'red'); 
@@ -277,7 +280,7 @@
 
     // 이미지 로드가 완료되면 애니메이션 시작
     tomatoImg.onload = function() {
-        // 토마토 초기화
+        // 달 초기화
         for (let i = 0; i < maxTomatoes; i++) {
             tomatoes.push(new Tomato());
         }
@@ -295,6 +298,15 @@
         }
         animate(); 
     };
+
+    // 💡 4. 이력서 인쇄 기능 활성화 (현재 페이지의 About Me 섹션만 인쇄)
+const printPageBtn = document.getElementById('print-page-btn'); 
+
+if (printPageBtn) {
+    printPageBtn.addEventListener('click', () => { 
+        window.open("이력서 및 자기소개서.pdf", "_blank");
+    });
+}
 </script>
 </body>
 </html>

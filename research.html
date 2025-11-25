@@ -12,7 +12,8 @@
             padding-top: 100px;
         }
         .detail-card {
-            background-color: #fff;
+            background-color: var(--card-bg-color);
+            color: var(--text-color) !important;
             padding: 30px;
             margin-bottom: 30px;
             border-radius: 8px;
@@ -22,9 +23,16 @@
         .detail-card h3 {
             color: var(--main-color);
             margin-bottom: 15px;
-            border-bottom: 2px solid #eee;
+            border-bottom: 2px solid var(--sub-text-color);
             padding-bottom: 10px;
         }
+
+        .detail-card h4, 
+        .detail-card p,
+        .detail-card ul li {
+            color: var(--text-color) !important; 
+        }
+
         .detail-list {
             list-style: none;
             padding-left: 0;
@@ -56,7 +64,8 @@
             font-weight: 500;
         }
         .paper-info {
-            background-color: #f7f7f7;
+            background-color: var(--card-bg-color);
+            color: var(--text-color) !important;
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 30px;
@@ -65,7 +74,7 @@
             text-align: center;
             margin: 30px 0;
             padding: 20px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--sub-text-color);
             border-radius: 8px;
         }
         .figure-box img {
@@ -90,7 +99,7 @@
         .header h1 a {
             font-size: 1.6em;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-color);
             letter-spacing: -1px;
         }
         .header nav ul {
@@ -101,12 +110,12 @@
             margin-left: 30px;
         }
         .header nav ul li a {
-            color: #fff;
+            color: var(--text-color);
             font-weight: 500;
             transition: all 0.3s ease;
             padding-bottom: 5px;
             position: relative;
-            text-decoration: none; /* 링크 밑줄 제거 */
+            text-decoration: none; 
         }
     </style>
 </head>
@@ -115,7 +124,7 @@
     
         <header class="header">
         <div class="container">
-            <h1><a href="main.html">🍅</a></h1>
+            <h1><a href="main.html">〄</a></h1>
             <nav class="nav" aria-label="메인 페이지 내비게이션">
                 <ul>
                     <li class="dropdown">
@@ -224,7 +233,7 @@
 <script>
     const canvas = document.getElementById('tomato-canvas');
     const ctx = canvas.getContext('2d');
-    const themeToggle = document.getElementById('theme-toggle'); // 버튼 ID 유지
+    const themeToggle = document.getElementById('theme-toggle'); 
     const body = document.body;
 
     // 💡 1. 캔버스 크기 설정 (반응형 대응)
@@ -239,11 +248,11 @@
     const maxTomatoes = 13; 
     let tomatoes = [];
 
-    // 토마토 이미지 로드 (경로 확인 필요)
+    // 달 이미지 로드 (경로 확인 필요)
     const tomatoImg = new Image();
-    tomatoImg.src = './image/toma.png'; 
+    tomatoImg.src = './image/moon.png'; 
 
-    // 토마토 객체 생성자 (애니메이션 로직 유지)
+    // 달 객체 생성자 (애니메이션 로직 유지)
     function Tomato() {
         this.size = Math.random() * 87 + 65; 
         this.x = Math.random() * (canvas.width - this.size);
@@ -252,10 +261,10 @@
         this.speedY = (Math.random() - 0.5) * 3; 
         this.rotation = Math.random() * Math.PI * 2; 
         this.rotationSpeed = (Math.random() - 0.5) * 0.005;
-        this.opacity = Math.random() * 0.05 + 0.1; 
+        this.opacity = Math.random() * 0.05 + 0.5; 
     }
 
-    // 토마토 그리기 (애니메이션 로직 유지)
+    // 달 그리기 (애니메이션 로직 유지)
     Tomato.prototype.draw = function() {
         ctx.save();
         ctx.globalAlpha = this.opacity; 
@@ -265,7 +274,7 @@
         ctx.restore();
     };
 
-    // 토마토 업데이트 (애니메이션 로직 유지)
+    // 달 업데이트 (애니메이션 로직 유지)
     Tomato.prototype.update = function() {
         this.x += this.speedX;
         this.y += this.speedY;
@@ -279,7 +288,7 @@
 
     // 💡 2. 애니메이션 루프 (현재 색상 모드에 맞춰 배경색 동적 변경)
     function animate() {
-        // body에 color-mode-green 클래스가 있는지 확인하여 배경색 결정
+
         const isGreenMode = body.classList.contains('color-mode-green');
         
         // CSS 변수에서 배경색 가져오기.
@@ -298,34 +307,31 @@
         requestAnimationFrame(animate);
     }
     
-    // 💡 3. 색상 전환 기능 구현
+    // 💡 3. 색상 전환 기능 구현 및 LocalStorage 처리
     
-    // 저장된 테마 불러와 초기 적용 및 버튼 아이콘 설정
-    // 'color-mode' 값은 'red' 또는 'green'
-    const savedColorMode = localStorage.getItem('color-mode');
-
     function applyColorMode(mode) {
-        // 모든 색상 클래스 제거
-        body.classList.remove('color-mode-red', 'color-mode-green');
-        
-        if (mode === 'green') {
-            body.classList.add('color-mode-green');
-            themeToggle.innerHTML = '<i class="fas fa-undo"></i> RED'; // 그린 모드일 때 레드 전환 버튼
-        } else { // 기본값은 red
-            body.classList.add('color-mode-red');
-            themeToggle.innerHTML = '<i class="fas fa-leaf"></i> GREEN'; // 레드 모드일 때 그린 전환 버튼
-        }
-    }
 
-    // 페이지 로드 시 테마 적용 (저장된 테마가 없으면 'red')
+    body.classList.remove('color-mode-red', 'color-mode-green');
+
+    if (mode === 'green') {
+         body.classList.add('color-mode-green');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i> LIGHT'; 
+     } else { 
+     body.classList.add('color-mode-red');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i> DARK'; 
+     }
+}
+
+    const savedColorMode = localStorage.getItem('color-mode');
     applyColorMode(savedColorMode || 'red'); 
-
     // 색상 토글 버튼 클릭 이벤트
     themeToggle.addEventListener('click', () => {
         const currentMode = body.classList.contains('color-mode-green') ? 'green' : 'red';
         const newMode = currentMode === 'red' ? 'green' : 'red';
         
         localStorage.setItem('color-mode', newMode);
+        
+        // 새로운 모드를 페이지에 적용
         applyColorMode(newMode);
     });
 
@@ -340,17 +346,25 @@
         animate();
     };
     
-    // 이미지 로드가 실패할 경우 콘솔에 오류 메시지 출력
+
     tomatoImg.onerror = function() {
         console.error("토마토 이미지 로드 실패: './image/toma.png' 경로를 확인하세요.");
-        // 이미지가 없어도 페이지는 작동하도록 애니메이션 강제 시작
         if (tomatoes.length === 0) {
-             for (let i = 0; i < maxTomatoes; i++) {
+            for (let i = 0; i < maxTomatoes; i++) {
                 tomatoes.push(new Tomato());
             }
         }
         animate(); 
     };
+    
+    // 💡 4. 이력서 인쇄 기능 활성화 (현재 페이지의 About Me 섹션만 인쇄)
+const printPageBtn = document.getElementById('print-page-btn'); 
+
+if (printPageBtn) {
+    printPageBtn.addEventListener('click', () => { 
+        window.open("이력서 및 자기소개서.pdf", "_blank");
+    });
+}
 </script>
 </body>
 </html>
