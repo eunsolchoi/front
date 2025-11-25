@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최은솔 | 개발자 포트폴리오</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body class="color-mode-red">
+    
+    <canvas id="tomato-canvas"></canvas>
+
+    <header class="header">
+        <div class="container">
+            <h1><a href="#intro">🍅</a></h1>
+            <nav class="nav" aria-label="메인 페이지 내비게이션">
+                <ul>
+                    <li class="dropdown">
+                        <a href="main.html#about" class="dropbtn">About</a>
+                        <div class="dropdown-content">
+                            <a href="main.html#about">About Me (본문)</a> 
+                            <a href="이력서 및 자기소개서.docx" target="_blank">이력서 및 자기소개서 download</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="main.html#portfolio" class="dropbtn">Project</a>
+                        <div class="dropdown-content">
+                            <a href="attendance_detail.html">출결관리 프로젝트</a> 
+                            <a href="research.html">Kinect 음성인식</a>
+                        </div>
+                    </li>    
+                    <li><a href="main.html#research">Research Paper</a></li>
+                    <li><a href="main.html#contact">Contact</a></li>
+                    <li>
+                        <button id="theme-toggle" class="nav-pill-btn" aria-label="색상전환">
+                            <i class="fas fa-leaf"></i> GREEN
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="intro" class="hero hero-v1">
+    <div class="container">
+        <p class="subtitle"> 세상의 흐름을 파악하고 기회를 창출하는</p>
+        
+        <h2>Developer <span class="highlight-name">최은솔</span>입니다.</h2>
+        
+        <div class="cta-group">
+            <a href="#portfolio" class="cta-button cta-primary">프로젝트 보러가기 →</a>
+            </div>
+    </div>
+    </section>
+    
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="profile-grid">
+                <div class="profile-image-box">
+                    <img src="./image/me.jpg" alt="최은솔 개발자 사진"> 
+                </div>
+                
+                <div class="profile-info">
+                    <h3>CONTACT & EDUCATION</h3>
+                    <p><strong>E-Mail:</strong> choi0102419@naver.com</p>
+                    <p><strong>Tel:</strong> 010-2419-6705</p>
+                    <p><strong>학력:</strong> 인하공업전문대학 컴퓨터정보공학과 재학 중 (2023.03 입학) </p>
+            
+                    <h3>EXPERIENCE & LICENSE</h3>
+                    <p>인하공업전문대학 총학생회 수석부회장 (2025)</p>
+                    <p>정보처리산업기사 필기 합격 (2025.03)</p>
+                    <p>운전면허 2종보통</p>
+
+                    <h3 id="skills">TECHNICAL SKILLS</h3>
+                    <dl class="skills-list">
+                        <dt>Frontend</dt>
+                        <dd>React<span class="skill-rating rating-b">B</span></dd>
+                        <dd>javascript<span class="skill-rating rating-a">A</span></dd>
+                        
+                        <dt>Backend</dt>
+                        <dd>Node.js<span class="skill-rating rating-b">B</span></dd>
+                        <dd>C#<span class="skill-rating rating-c">C</span></dd>
+                        <dd>Spring<span class="skill-rating rating-b">B</span></dd>
+                        <dd>Spring Data JPA<span class="skill-rating rating-b">B</span></dd>
+                        
+                        <dt>Database</dt>
+                        <dd>mySQL<span class="skill-rating rating-a">A</span></dd>
+                        <dd>Oracle<span class="skill-rating rating-b">B</span></dd>
+                        
+                        <dt>Imbedded</dt>
+                        <dd>C<span class="skill-rating rating-c">C</span></dd>
+                        
+                        <dt>Others</dt>
+                        <dd>Python<span class="skill-rating rating-b">B</span></dd>
+                        <dd>Pandas<span class="skill-rating rating-b">B</span></dd>
+                        <dd>Kinect<span class="skill-rating rating-a">A</span></dd>
+                        <dd>Unity<span class="skill-rating rating-b">B</span></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section portfolio-section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+
+            <div class="project-card">
+                <h3>출결관리 프로젝트 (React, Node.js, mySQL)</h3>
+                <p class="tag-list">#웹개발 #출결시스템 #React #Node.js #DB설계</p>
+                <p>관리자, 교수, 학생, 학부모 권한별 화면을 설계하고 DB 설계를 통해 웹 사이트를 구현한 프로젝트입니다.</p>
+                <ul class="key-functions">
+                    <li>주요 기능: 로그인, 출석체크, 출석보고서, 사용자/개인정보/알림/공지사항 관리 등</li>
+                    <li>이슈 해결: Git 저장 관리 중 디자인 문제 발생 → 코드를 캡슐화하여 문제 해결</li>
+                </ul>
+                <a href="attendance_detail.html" class="view-detail">상세 페이지 보기</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Kinect Sensor 기반의 음성인식 게임 (Kinect, Unity)</h3>
+                <p class="tag-list">#게임개발 #Kinect #Unity #음성인식 #앱구현</p>
+                <p>신체 제약자와 아동을 위한 음성인식 게임 애플리케이션 구현 및 설계 프로젝트입니다.</p>
+                <a href="research.html" class="view-detail">상세 페이지 보기</a> </div>
+
+            </div>
+    </section>
+    
+    <section id="research" class="section research-section">
+        <div class="container">
+            <h2 class="section-title">Research Paper</h2>
+            <div class="research-content-box">
+                <p class="paper-title">Kinect Sensor 기반의 신체제약자와 아동을 위한 음성인식게임 애플리케이션 구현 및 설계</p>
+                <p class="paper-authors">
+                    저자: 이원주, 최은솔, 엄휘찬, 전민기, 이건휘 <br>
+                    <span class="author-affil">+인하공업전문대학 컴퓨터정보공학과</span>
+                </p>
+                
+                <h3 class="abstract-title">초록 (Abstract)</h3>
+                <p class="abstract-body">
+                    본 논문에서는 [Kinect 센서의 음성인식 기능]을 활용하여 게임 접근성 향상 애플리케이션을 설계하고 구현했습니다.이 애플리케이션은 신체적 제약이 있는 사용자들이 기존 컨트롤러 사용의 한계를 극복하도록 돕습니다. Unity 게임 엔진과 Kinect 센서를 미들웨어로 연동하여 음성 명령을 통한 직관적인 게임 조작 기능을 구현했습니다. `TcpClient`와 `NetworkStream`을 활용한 통신 방식으로 안정적인 음성 명령 처리가 가능하며, 이는 접근성 높은 게임 환경 제공과 함께 아동들의 방향 감각 발달을 돕는 교육적 효과도 기대할 수 있습니다.
+                </p>
+
+                <h3 class="abstract-title">주요 키워드</h3>
+                <p class="tag-list research-tags">#Kinect #Unity #Speech #Middleware</p>
+
+                <div class="research-link">
+                    <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12098790" target="_blank" class="cta-button cta-primary">DBpia 원문 보러가기 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <p>프로젝트와 관련하여 궁금한 점이 있으시거나 협업을 제안하고 싶으시다면 편하게 연락해주세요.</p>
+            <a href="mailto:choi0102419@naver.com" class="contact-email-btn">choi0102419@naver.com</a>
+        </div>
+    </section>
+
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Choi Eunsol. All Rights Reserved.</p>
+        </div>
+    </footer>
+<script>
+    const canvas = document.getElementById('tomato-canvas');
+    const ctx = canvas.getContext('2d');
+    const themeToggle = document.getElementById('theme-toggle'); 
+    const body = document.body;
+
+    // 💡 1. 캔버스 크기 설정 (반응형 대응)
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const maxTomatoes = 13; 
+    let tomatoes = [];
+
+    // 토마토 이미지 로드 (경로 확인 필요)
+    const tomatoImg = new Image();
+    tomatoImg.src = './image/toma.png'; 
+
+    // 토마토 객체 생성자 (애니메이션 로직 유지)
+    function Tomato() {
+        this.size = Math.random() * 87 + 65; 
+        this.x = Math.random() * (canvas.width - this.size);
+        this.y = Math.random() * (canvas.height - this.size);
+        this.speedX = (Math.random() - 0.5) * 3; 
+        this.speedY = (Math.random() - 0.5) * 3; 
+        this.rotation = Math.random() * Math.PI * 2; 
+        this.rotationSpeed = (Math.random() - 0.5) * 0.005;
+        this.opacity = Math.random() * 0.05 + 3; 
+    }
+
+    // 토마토 그리기 (애니메이션 로직 유지)
+    Tomato.prototype.draw = function() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity; 
+        ctx.translate(this.x + this.size / 2, this.y + this.size / 2); 
+        ctx.rotate(this.rotation); 
+        ctx.drawImage(tomatoImg, -this.size / 2, -this.size / 2, this.size, this.size);
+        ctx.restore();
+    };
+
+    // 토마토 업데이트 (애니메이션 로직 유지)
+    Tomato.prototype.update = function() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.rotation += this.rotationSpeed;
+
+        if (this.x + this.size < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = -this.size;
+        if (this.y + this.size < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = -this.size;
+    };
+
+    // 💡 2. 애니메이션 루프 (현재 색상 모드에 맞춰 배경색 동적 변경)
+    function animate() {
+
+        const isGreenMode = body.classList.contains('color-mode-green');
+        
+        // CSS 변수에서 배경색 가져오기.
+        const bgColor = isGreenMode ? 
+                        getComputedStyle(body).getPropertyValue('--green-bg-color') : 
+                        getComputedStyle(body).getPropertyValue('--red-bg-color');
+        
+        ctx.fillStyle = bgColor.trim() || 'white'; 
+        ctx.fillRect(0, 0, canvas.width, canvas.height); 
+
+        for (let i = 0; i < tomatoes.length; i++) {
+            tomatoes[i].update();
+            tomatoes[i].draw();
+        }
+
+        requestAnimationFrame(animate);
+    }
+    
+    // 💡 3. 색상 전환 기능 구현 및 LocalStorage 처리
+    
+    function applyColorMode(mode) {
+       
+        body.classList.remove('color-mode-red', 'color-mode-green');
+        
+        if (mode === 'green') {
+            body.classList.add('color-mode-green');
+            
+            themeToggle.innerHTML = '<i class="fas fa-undo"></i> RED'; 
+        } else { 
+            body.classList.add('color-mode-red');
+            themeToggle.innerHTML = '<i class="fas fa-leaf"></i> GREEN'; 
+        }
+    }
+
+    const savedColorMode = localStorage.getItem('color-mode');
+    applyColorMode(savedColorMode || 'red'); 
+    // 색상 토글 버튼 클릭 이벤트
+    themeToggle.addEventListener('click', () => {
+        const currentMode = body.classList.contains('color-mode-green') ? 'green' : 'red';
+        const newMode = currentMode === 'red' ? 'green' : 'red';
+        
+        localStorage.setItem('color-mode', newMode);
+        
+        // 새로운 모드를 페이지에 적용
+        applyColorMode(newMode);
+    });
+
+
+    // 이미지 로드가 완료되면 애니메이션 시작
+    tomatoImg.onload = function() {
+        // 토마토 초기화
+        for (let i = 0; i < maxTomatoes; i++) {
+            tomatoes.push(new Tomato());
+        }
+        // 애니메이션 시작
+        animate();
+    };
+    
+
+    tomatoImg.onerror = function() {
+        console.error("토마토 이미지 로드 실패: './image/toma.png' 경로를 확인하세요.");
+        if (tomatoes.length === 0) {
+            for (let i = 0; i < maxTomatoes; i++) {
+                tomatoes.push(new Tomato());
+            }
+        }
+        animate(); 
+    };
+</script>
+</body>
+</html>

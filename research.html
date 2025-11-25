@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연구 논문 상세 | Kinect 음성인식 게임</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 상세 페이지 전용 스타일 */
+        .project-detail-section {
+            padding-top: 100px;
+        }
+        .detail-card {
+            background-color: #fff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+            border-left: 5px solid var(--main-color);
+        }
+        .detail-card h3 {
+            color: var(--main-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .detail-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .detail-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .detail-list li::before {
+            content: '✓';
+            color: var(--main-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .tech-stack-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .tech-stack-detail span {
+            background-color: var(--sub-text-color);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        .paper-info {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .figure-box {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .figure-box img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 15px auto;
+        }
+        .figure-box figcaption {
+            font-size: 0.9em;
+            color: var(--sub-text-color);
+        }
+        /* 추가: 상세 페이지 헤더 네비게이션 복원을 위한 스타일 */
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header h1 a {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+        .header nav ul {
+            list-style: none;
+            display: flex;
+        }
+        .header nav ul li {
+            margin-left: 30px;
+        }
+        .header nav ul li a {
+            color: #fff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding-bottom: 5px;
+            position: relative;
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tomato-canvas"></canvas> 
+    
+        <header class="header">
+        <div class="container">
+            <h1><a href="main.html">🍅</a></h1>
+            <nav class="nav" aria-label="메인 페이지 내비게이션">
+                <ul>
+                    <li class="dropdown">
+                        <a href="main.html#about" class="dropbtn">About</a>
+                        <div class="dropdown-content">
+                            <a href="#about">About Me (본문)</a> 
+                            <a href="이력서 및 자기소개서.docx" target="_blank">이력서 및 자기소개서 download</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="main.html#portfolio" class="dropbtn">Project</a>
+                        <div class="dropdown-content">
+                            <a href="attendance_detail.html">출결관리 프로젝트</a> 
+                            <a href="research.html">kinect 음성인식</a>
+                        </div>
+                    </li>    
+                    <li><a href="main.html#research">Research Paper</a></li>
+                    <li><a href="main.html#contact">Contact</a></li>
+                    <li>
+                        <button id="theme-toggle" class="nav-pill-btn" aria-label="색상전환">
+                            <i class="fas fa-leaf"></i> GREEN
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <section id="research-detail" class="section project-detail-section">
+        <div class="container">
+            <h2 class="section-title">Kinect 센서 기반 음성인식 게임 (논문 상세)</h2>
+            <p class="subtitle" style="text-align: center;">신체 제약자와 아동을 위한 접근성 향상 애플리케이션 구현</p>
+
+            <div class="paper-info">
+                <h3 style="border-bottom: none;">[논문 정보]</h3>
+                <p><strong>논문제목:</strong> Kinect Sensor 기반의 신체제약자와 아동을 위한 음성인식게임 애플리케이션 구현 및 설계</p>
+                <p><strong>주요 저자:</strong> 이원주, 최은솔, 엄휘찬, 전민기, 이건휘</p>
+                <p><strong>키워드:</strong> #Kinect, #Unity, #Speech, #middleware</p>
+                <div style="margin-top: 15px;">
+                    <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12098790" target="_blank" class="cta-button cta-primary" style="display: inline-block; padding: 10px 20px;">DBpia 원문 보러가기 →</a>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <h3>📜 논문 요약 (Abstract)</h3>
+                <p>
+                    본 연구는 [Kinect 센서의 음성인식 기능을 활용하여] 게임 접근성을 향상시키기 위해 설계되었습니다. 신체적 제약이 있는 사용자나 아동이 기존의 컨트롤러 사용 한계를 극복하고, 음성 명령을 통해 직관적으로 게임을 조작할 수 있도록 Unity 게임 엔진과 Kinect 센서를 미들웨어로 연동하여 구현했습니다.
+                </p>
+                <p>
+                    TcpClient와 NetworkStream을 사용한 안정적인 미들웨어 통신 방식을 적용하여 음성 명령 처리를 확보했으며, 이는 접근성 향상 외에도 아동들의 방향 감각 발달에 도움을 주는 교육적 효과도 제공합니다.
+                </p>
+            </div>
+
+            <div class="detail-card">
+                <h3>💻 개발 및 구현 상세</h3>
+                <div class="tech-stack-detail">
+                    <span>게임 엔진: Unity</span>
+                    <span>하드웨어: Kinect Sensor</span>
+                    <span>통신 방식: TcpClient, NetworkStream</span>
+                    <span>역할: 미들웨어 및 통신 로직 구현 (최은솔 기여)</span>
+                </div>
+                <h4 style="margin-top: 20px; color: #333;">핵심 구현 내용</h4>
+                <ul class="detail-list">
+                    <li>Kinect 음성인식 연동: Unity에서 Kinect 센서로부터 음성 명령을 수신하여 게임 조작 이벤트로 변환하는 미들웨어 로직 설계 및 구현.</li>
+                    <li>안정적인 통신: `TcpClient`와 `NetworkStream`을 활용하여 센서 데이터와 게임 엔진 간의 지연 없는 명령 전달 시스템 구축.</li>
+                    <li>게임 메커니즘: 주어진 Moves 횟수 내로 아이템을 모두 먹고 다음 스테이지로 넘어가는 구조 설계. 랭킹 시스템(점수/시간 기준) 구현.</li>
+                    <li>교육적 요소: 방향 명령(앞, 뒤, 좌, 우)을 음성으로 반복하여 입력함으로써 아동의 방향 감각 발달을 유도.</li>
+                </ul>
+            </div>
+            
+            <div class="detail-card">
+                <h3> 게임 구현 화면</h3>
+                <figure class="figure-box">
+                    <div class="game-screens">
+
+                        <img src="./image/first.png" alt="(a) 초기 화면">
+                        <img src="./image/play.png" alt="(b) 실행 화면">
+                        <img src="./image/over.png" alt="(c) game over 창">
+                        <img src="./image/rank.png" alt="(d) 랭킹시스템">
+                        
+                    </div>
+                    <figcaption>
+                        논문 [그림 2] 게임 구현 화면. (a) 초기화면, (b) 실행 화면, (c) Game Over 창, (d) 랭킹 시스템을 보여줍니다.
+                    </figcaption>
+                </figure>
+                <p>
+                    [그림 2]는 구현된 게임의 주요 화면을 보여줍니다. (a) 초기 화면**에는 Start, Ranking, Quit 버튼이 있으며, (b) 실행 화면에서는 주어진 Moves 횟수 내에 아이템을 획득해야 합니다. (c) Game Over 창은 Moves나 시간이 초과될 경우 표시됩니다. (d) 랭킹 시스템은 높은 점수와 짧은 시간을 기준으로 순위를 자동 등록합니다.
+                </p>
+            </div>
+
+
+            <div class="detail-card">
+                <h3>🚀 기여 및 성과</h3>
+                <p>
+                    본 연구를 통해 Unity 환경에서의 외부 센서 연동 및 미들웨어 통신 로직 구현 능력을 입증했습니다. 이는 단순히 게임을 개발하는 것을 넘어, 접근성(Accessibility) 문제를 기술적으로 해결하려는 고민의 결과물이며, 학술적인 연구 과정과 논문 작성 경험까지 확보한 중요한 성과입니다.
+                </p>
+                
+                <div style="margin-top: 30px; text-align: center;">
+                    <a href="main.html#research" class="cta-button cta-primary">포트폴리오 목록으로 돌아가기</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+<script>
+    const canvas = document.getElementById('tomato-canvas');
+    const ctx = canvas.getContext('2d');
+    const themeToggle = document.getElementById('theme-toggle'); // 버튼 ID 유지
+    const body = document.body;
+
+    // 💡 1. 캔버스 크기 설정 (반응형 대응)
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const maxTomatoes = 13; 
+    let tomatoes = [];
+
+    // 토마토 이미지 로드 (경로 확인 필요)
+    const tomatoImg = new Image();
+    tomatoImg.src = './image/toma.png'; 
+
+    // 토마토 객체 생성자 (애니메이션 로직 유지)
+    function Tomato() {
+        this.size = Math.random() * 87 + 65; 
+        this.x = Math.random() * (canvas.width - this.size);
+        this.y = Math.random() * (canvas.height - this.size);
+        this.speedX = (Math.random() - 0.5) * 3; 
+        this.speedY = (Math.random() - 0.5) * 3; 
+        this.rotation = Math.random() * Math.PI * 2; 
+        this.rotationSpeed = (Math.random() - 0.5) * 0.005;
+        this.opacity = Math.random() * 0.05 + 0.1; 
+    }
+
+    // 토마토 그리기 (애니메이션 로직 유지)
+    Tomato.prototype.draw = function() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity; 
+        ctx.translate(this.x + this.size / 2, this.y + this.size / 2); 
+        ctx.rotate(this.rotation); 
+        ctx.drawImage(tomatoImg, -this.size / 2, -this.size / 2, this.size, this.size);
+        ctx.restore();
+    };
+
+    // 토마토 업데이트 (애니메이션 로직 유지)
+    Tomato.prototype.update = function() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.rotation += this.rotationSpeed;
+
+        if (this.x + this.size < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = -this.size;
+        if (this.y + this.size < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = -this.size;
+    };
+
+    // 💡 2. 애니메이션 루프 (현재 색상 모드에 맞춰 배경색 동적 변경)
+    function animate() {
+        // body에 color-mode-green 클래스가 있는지 확인하여 배경색 결정
+        const isGreenMode = body.classList.contains('color-mode-green');
+        
+        // CSS 변수에서 배경색 가져오기.
+        const bgColor = isGreenMode ? 
+                        getComputedStyle(body).getPropertyValue('--green-bg-color') : 
+                        getComputedStyle(body).getPropertyValue('--red-bg-color');
+        
+        ctx.fillStyle = bgColor.trim() || 'white'; 
+        ctx.fillRect(0, 0, canvas.width, canvas.height); 
+
+        for (let i = 0; i < tomatoes.length; i++) {
+            tomatoes[i].update();
+            tomatoes[i].draw();
+        }
+
+        requestAnimationFrame(animate);
+    }
+    
+    // 💡 3. 색상 전환 기능 구현
+    
+    // 저장된 테마 불러와 초기 적용 및 버튼 아이콘 설정
+    // 'color-mode' 값은 'red' 또는 'green'
+    const savedColorMode = localStorage.getItem('color-mode');
+
+    function applyColorMode(mode) {
+        // 모든 색상 클래스 제거
+        body.classList.remove('color-mode-red', 'color-mode-green');
+        
+        if (mode === 'green') {
+            body.classList.add('color-mode-green');
+            themeToggle.innerHTML = '<i class="fas fa-undo"></i> RED'; // 그린 모드일 때 레드 전환 버튼
+        } else { // 기본값은 red
+            body.classList.add('color-mode-red');
+            themeToggle.innerHTML = '<i class="fas fa-leaf"></i> GREEN'; // 레드 모드일 때 그린 전환 버튼
+        }
+    }
+
+    // 페이지 로드 시 테마 적용 (저장된 테마가 없으면 'red')
+    applyColorMode(savedColorMode || 'red'); 
+
+    // 색상 토글 버튼 클릭 이벤트
+    themeToggle.addEventListener('click', () => {
+        const currentMode = body.classList.contains('color-mode-green') ? 'green' : 'red';
+        const newMode = currentMode === 'red' ? 'green' : 'red';
+        
+        localStorage.setItem('color-mode', newMode);
+        applyColorMode(newMode);
+    });
+
+
+    // 이미지 로드가 완료되면 애니메이션 시작
+    tomatoImg.onload = function() {
+        // 토마토 초기화
+        for (let i = 0; i < maxTomatoes; i++) {
+            tomatoes.push(new Tomato());
+        }
+        // 애니메이션 시작
+        animate();
+    };
+    
+    // 이미지 로드가 실패할 경우 콘솔에 오류 메시지 출력
+    tomatoImg.onerror = function() {
+        console.error("토마토 이미지 로드 실패: './image/toma.png' 경로를 확인하세요.");
+        // 이미지가 없어도 페이지는 작동하도록 애니메이션 강제 시작
+        if (tomatoes.length === 0) {
+             for (let i = 0; i < maxTomatoes; i++) {
+                tomatoes.push(new Tomato());
+            }
+        }
+        animate(); 
+    };
+</script>
+</body>
+</html>

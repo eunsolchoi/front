@@ -1,0 +1,802 @@
+/* ====================================
+    0. 초기화 및 기본 스타일 (토마토 슬라이스 컨셉)
+==================================== */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* ====================================
+        1. 🍅 레드 모드 컬러 팔레트 (기본값)
+    ==================================== */
+    --main-color-red: #D2342F;       
+    --main-hover-red: #A32926;       
+    --red-bg-color: #FFFFFF;         
+
+    --red-header-bg: linear-gradient(to bottom, #2b7551, #D2342F);
+
+    /* ====================================
+        2. 🌿 그린 모드 컬러 팔레트
+    ==================================== */
+    --main-color-green: #2b7551;    
+    --main-hover-green: #41bc80;     
+    --green-bg-color: #F0FFF0;       
+    --green-header-bg: linear-gradient(to bottom, #D2342F, #2b7551);
+
+    /* ====================================
+        3. 공통/현재 사용 색상 변수 (기본값: RED)
+    ==================================== */
+    --main-color: var(--main-color-red);
+    --main-hover-color: var(--main-hover-red);
+    --bg-color: var(--red-bg-color);
+    --header-bg-gradient: var(--red-header-bg);
+
+    /* 공통 텍스트/카드/그림자 (라이트 모드 고정) */
+    --text-color: #1D2635;         
+    --sub-text-color: #7a869a;    
+    --card-bg-color: #FFFFFF;      
+    --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+
+}
+
+/* ====================================
+    0-1. 색상 전환 모드 (초록 <-> 빨강)
+==================================== */
+
+/* 🌿 Green Mode: body에 color-mode-green 클래스가 있을 때 변수 오버라이드 */
+body.color-mode-green {
+    --main-color: var(--main-color-green);
+    --main-hover-color: var(--main-hover-green);
+    --bg-color: var(--green-bg-color);
+    --header-bg-gradient: var(--green-header-bg);
+}
+
+/* 🍅 Red Mode (기본): body에 color-mode-red 클래스가 있을 때 */
+body.color-mode-red {
+    --main-color: var(--main-color-red);
+    --main-hover-color: var(--main-hover-red);
+    --bg-color: var(--red-bg-color);
+    --header-bg-gradient: var(--red-header-bg);
+}
+
+
+/* body와 모든 요소에 변수 적용 */
+body {
+    font-family: 'Pretendard', 'Inter', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.7;
+    transition: background-color 0.3s ease; 
+}
+
+/* ====================================
+    1. 헤더 (Header) - 배경색 통일 및 네비게이션 색상 수정
+==================================== */
+.header {
+    background-image: var(--header-bg-gradient);
+    background-color: var(--main-color);
+    border-bottom: 1px solid var(--main-hover-color);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    top: 25px; 
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 5px;
+    overflow: hidden;
+    border-top: 3px solid var(--main-color);
+}
+
+.dropdown-content a{
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: 400;
+    transition: background-color 0.3s;
+}
+.dropdown-content a:hover {
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.dropdown .dropbtn {
+    color: #fff;
+    font-weight: 500;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header h1 a {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #fff; 
+    letter-spacing: -1px;
+}
+
+.header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.header nav ul li {
+    margin-left: 30px;
+}
+
+.header nav ul li a {
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.header nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease;
+}
+
+.header nav ul li a:hover::after,
+.header nav ul li a.active::after {
+    width: 100%;
+}
+
+.header nav ul li.dropdown .dropdown-content a {
+    color: var(--text-color); 
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: 400;
+    transition: background-color 0.3s;
+}
+.header nav ul li.dropdown .dropdown-content a:hover {
+    background-color: var(--main-color); 
+    color: #fff; 
+}
+
+.dropdown .dropbtn {
+    color: #fff;
+    font-weight: 500;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+
+/* ====================================
+    2. 인트로 / 히어로 섹션 (컨셉 1)
+==================================== */
+.hero-v1 {
+    background-color: transparent; 
+    padding: 150px 0;
+    text-align: center;
+    position: relative;
+    z-index: 10; 
+}
+
+.hero-v1 .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-v1 .subtitle {
+    font-size: 1.1em;
+    color: var(--sub-text-color);
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.hero-v1 h2 {
+    font-size: 3.8em;
+    font-weight: 700;
+    margin-bottom: 40px;
+    line-height: 1.2;
+    color: var(--text-color);
+}
+
+.hero-v1 .highlight-name {
+    color: var(--main-color);
+}
+
+.cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: 50px; /* 둥근 버튼 */
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cta-primary {
+    background-color: var(--main-color);
+    color: #fff;
+    border: 2px solid var(--main-color);
+}
+
+.cta-primary:hover {
+    background-color: var(--main-hover-color);
+    border-color: var(--main-hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cta-secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--sub-text-color);
+}
+
+.cta-secondary:hover {
+    background-color: var(--bg-color);
+    border-color: var(--main-color);
+    color: var(--main-color);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ====================================
+    3. About Me 섹션
+==================================== */
+.section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 10; 
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--main-color);
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 80px;
+    height: 4px;
+    background-color: var(--main-color);
+    border-radius: 2px;
+}
+
+.about-section .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.profile-image-box {
+    text-align: center;
+    position: relative;
+    padding: 10px;
+    border: 3px solid var(--main-color); 
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image-box img {
+    max-width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+.profile-info h3 {
+    font-size: 1.5em;
+    color: var(--main-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--main-color);
+    padding-bottom: 8px;
+    margin-top: 30px;
+}
+.profile-info h3:first-of-type {
+    margin-top: 0;
+}
+
+.profile-info p {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.skills-list {
+    list-style: none;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills-list li {
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+.skills-list dt { 
+    font-weight: 700;
+    color: var(--text-color);
+    padding: 8px 0 0 0; 
+    width: 100%;
+    margin-top: 10px;
+    border-top: 1px dashed var(--sub-text-color);
+}
+
+.skills-list dt:first-of-type {
+    margin-top: 0;
+    border-top: none;
+}
+
+.skills-list dd {
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-inline-start: 0; 
+}
+
+
+/* ====================================
+    4. 포트폴리오 섹션
+==================================== */
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* dt와 dd 사이의 간격 */
+    margin-top: 10px;
+}
+
+.skills-list dt {
+    flex-basis: 100%; 
+    font-weight: 700;
+    color: var(--text-color); 
+    margin-top: 15px;
+    font-size: 1.1em;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 5px;
+}
+
+/* 개별 기술명 (dd) 스타일 */
+.skills-list dd {
+    /* 기술명과 등급 뱃지를 나란히 정렬 */
+    display: inline-flex;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.95em;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+/* 등급 뱃지 (span) 공통 스타일 */
+.skill-rating {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 20px; 
+    height: 20px;
+    margin-left: 8px; 
+    padding: 0 5px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #fff; 
+}
+
+/* 등급별 색상 정의 */
+.rating-a {
+    /* A등급:  */
+    background-color: var(--main-color); 
+}
+.rating-b {
+    /* B등급: 중급  */
+    background-color: #fdb4e7 
+}
+.rating-c {
+    /* C등급: 초급*/
+    background-color: #5992f4; 
+}
+.portfolio-section {
+        background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.portfolio-section .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.project-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.project-card h3 {
+    font-size: 1.8em;
+    color: var(--main-color);
+    margin-bottom: 10px;
+}
+
+.project-card .tag-list {
+    font-size: 0.95em;
+    color: var(--sub-text-color);
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    margin-bottom: 15px;
+}
+
+.project-card .key-functions {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.project-card .view-detail {
+    display: inline-block;
+    color: var(--main-color);
+    font-weight: 600;
+    position: relative;
+    padding-right: 20px;
+}
+
+.project-card .view-detail::after {
+    content: '→';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.project-card .view-detail:hover::after {
+    transform: translateY(-50%) translateX(5px);
+}
+
+.game-screens {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
+    margin-bottom: 20px; 
+    margin-top: 15px; 
+}
+
+.game-screens img {
+    width: 100%; 
+    height: auto; 
+    display: block;
+    border-radius: 5px; 
+    border: 1px solid #eee; 
+    object-fit: contain; 
+}
+
+
+/* ====================================
+    5. 연구 논문 섹션
+==================================== */
+.research-section {
+    
+    background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.research-section .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.research-content-box {
+    background-color: var(--bg-color);
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+}
+
+.paper-title {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--main-color);
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.paper-authors {
+    font-size: 0.95em;
+    color: var(--sub-text-color);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.author-affil {
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.abstract-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed var(--sub-text-color);
+    padding-bottom: 5px;
+}
+
+.abstract-body {
+    font-size: 1em;
+    color: var(--text-color);
+    margin-bottom: 25px;
+}
+
+.research-tags {
+    font-size: 0.9em;
+    font-style: italic;
+    color: var(--sub-text-color);
+    margin-bottom: 30px;
+}
+
+.research-link {
+    text-align: center;
+    margin-top: 40px;
+}
+
+
+/* ====================================
+    6. 컨택트 섹션
+==================================== */
+.contact-section {
+    background-color: var(--main-color); 
+    color: #fff;
+    text-align: center;
+    padding: 80px 0;
+    border-top: 1px solid var(--main-hover-color);
+}
+
+.contact-section .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contact-section .section-title {
+    color: #fff;
+}
+
+.contact-section .section-title::after {
+    background-color: #fff;
+}
+
+.contact-section p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.contact-email-btn {
+    display: inline-block;
+    background-color: #fff;
+    color: var(--main-color);
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-email-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ====================================
+    7. 푸터 (Footer)
+==================================== */
+.footer {
+    background-color: var(--text-color); 
+    color: #fff;
+    text-align: center;
+    padding: 25px 0;
+    font-size: 0.9em;
+}
+
+
+/* ====================================
+    7. 배경 캔버스 스타일 (토마토 애니메이션)
+==================================== */
+#tomato-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; 
+    pointer-events: none;
+    background-color: var(--canvas-fill-color); 
+}
+/* ====================================
+    8. 다크 모드 토글 버튼 스타일 (추가)
+==================================== */
+.nav-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--card-bg-color); 
+    color: var(--main-color); 
+    
+    border: 2px solid var(--main-color); 
+    cursor: pointer;
+    
+    padding: 6px 14px; 
+    border-radius: 25px; 
+    
+    font-size: 0.95em; 
+    font-weight: 700;
+    margin-left: 15px; 
+    transition: all 0.3s ease; 
+    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.nav-pill-btn:hover {
+
+    background-color: var(--main-color);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-pill-btn i {
+    font-size: 1.1em;
+    /* 텍스트와 아이콘 사이 여백 */
+    margin-right: 5px;
+}
+
+.header .nav-pill-btn {
+    /* 기존 스타일 유지 */
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px; /* 내부 여백 */
+    border-radius: 50px;
+    
+    width: 90px; 
+    min-width: 90px; 
+
+    
+    font-size: 0.9em;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header .nav-pill-btn i {
+    /* 아이콘과 텍스트 사이에 간격 추가 */
+    margin-right: 5px; 
+}
+
+#intro, #about, #portfolio, #research, #contact{
+    scroll-margin-top: 80px;
+}
+/* ====================================
+    9. 반응형 디자인
+==================================== */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .header nav ul {
+        margin-top: 10px;
+        justify-content: center;
+    }
+    .hero-v1 h2 {
+        font-size: 2.5em;
+    }
+    .cta-group {
+        flex-direction: column;
+    }
+    .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .section-title {
+        font-size: 2em;
+    }
+    /* 화면이 좁아지면 게임 이미지 2x2 형태로 변경 */
+    .game-screens {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .flying-tomatoes-background div {
+        /* 모바일에서는 토마토 크기 줄이기 */
+        width: 50px !important;
+        height: 50px !important;
+        opacity: 0.3 !important;
+    }
+}
