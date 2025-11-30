@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홍보물 상세 | 원점문화축제 Design & Marketing</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 상세 페이지 내 디자인 구역 스타일 추가 (main.css에 없는 경우 대비) */
+        .detail-card {
+            background-color: var(--card-bg-color);
+            color: var(--text-color); 
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+            border-left: 5px solid var(--main-color);
+        }
+        .design-category {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        .design-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .design-item {
+            flex: 1 1 300px;
+            max-width: 450px;
+            text-align: center;
+        }
+        .design-item p {
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* 1-1. 이미지 크기 일관성을 위한 스타일 (포스터, 배너, 축전 - 이미지가 컨테이너를 채우고 잘림) */
+        .design-item .img-wrapper {
+            width: 100%;
+            padding-top: 133.33%; 
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+        .design-item .img-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        
+        /* 1-2. 이미지 전체 보기를 위한 스타일  */
+        .design-item .img-contain-wrapper {
+            width: 100%;
+            padding-top: 133.33%; 
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            background-color: var(--card-bg-color); 
+        }
+        .design-item .img-contain-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            border: 1px solid var(--border-color); 
+            border-radius: 6px;
+        }
+
+
+        /* 2. 메뉴판 가로 나열을 위한 스타일 */
+        .menu-gallery-wrapper {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; 
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .menu-gallery-wrapper .menu-item {
+            flex: 1 1 45%; 
+            max-width: 300px;
+            text-align: center;
+        }
+        .menu-gallery-wrapper .menu-item img {
+            width: 100%;
+            height: auto; 
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* 3. 동영상 컨테이너 스타일 */
+        .media-container {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: var(--card-bg-color);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .media-container video {
+            width: 100%;
+            max-width: 800px; 
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid var(--border-color); 
+        }
+
+        .solo-badge {
+            display: inline-block;
+            background-color: var(--main-color);
+            color: white; 
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+        
+        body.color-mode-green .solo-badge {
+            color: #1D2635; 
+        }
+
+    </style>
+</head>
+<body class="color-mode-red">
+    <canvas id="tomato-canvas"></canvas>
+    <header class="header">
+        <div class="container">
+            <h1><a href="main.html#intro">〄</a></h1>
+            <nav class="nav" aria-label="메인 페이지 내비게이션">
+                <ul>
+                    <li><a href="main.html#about">About</a></li>
+                    <li><a href="main.html#portfolio">Skills Project</a></li> 
+                    <li><a href="main.html#marketing" class="active">Design & Marketing</a></li>
+                    <li><a href="main.html#research">Research Paper</a></li>
+                    <li><a href="main.html#contact">Contact</a></li>
+                    <li><button id="theme-toggle" class="nav-pill-btn"><i class="fas fa-moon"></i> DARK</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="detail-hero" class="hero hero-v1 project-detail-section">
+        <div class="container">
+            <p class="subtitle">총학생회 주관 '원점 문화 축제' 디자인 및 홍보 기획</p>
+            <h2>Casino Night Theme Design & Marketing 🃏</h2>
+            <div class="cta-group">
+                <p class="tag-list detail-tags">#축제홍보 #카지노컨셉 #블랙&화이트 #Canva #MiriCanvas #총괄기획</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="marketing-details" class="section">
+        <div class="container">
+            <div class="detail-card">
+                <h3>프로젝트 개요 (Overview)</h3>
+                <p>총학생회 수석부회장으로서 '원점 문화 축제'의 카지노 컨셉을 기획하고, 축제 전반에 사용될 모든 시각 홍보물 및 소품 디자인을 주도적으로 제작했습니다.</p>
+                <ul class="key-functions">
+                    <li>주요 역할: 전체 축제 컨셉 디자인 총괄 및 제작 (본인 100%), 메인 이벤트 기획 및 운영</li>
+                    <li>핵심 디자인: 블랙 & 화이트의 카지노/클래식 테마를 활용하여 고급스럽고 통일된 축제 분위기 조성</li>
+                    <li>사용 툴: Canva, MiriCanvas</li>
+                </ul>
+            </div>
+
+            <div class="detail-card design-category">
+                <h3>1. 메인 디자인: 포스터 & 비주얼 아이덴티티</h3>
+                <p>축제의 얼굴이 되는 공식 포스터와 주요 홍보물 디자인입니다. (단독 제작)</p>
+                <div class="design-gallery">
+                    <div class="design-item">
+                        <div class="img-wrapper">
+                            <img src="./image/축제 포스터.png" alt="poster">
+                        </div>
+                        <p>공식 축제 포스터 (Casino Night Theme)</p>
+                        <span class="solo-badge">단독 제작</span> 
+                    </div>
+                    <div class="design-item">
+                        <div class="img-contain-wrapper">
+                            <img src="./image/축제 슬로건.jpg" alt="slo">
+                        </div>
+                        <p>축제 슬로건 이미지</p>
+                        <span class="solo-badge">단독 제작</span>
+                    </div>
+                    <div class="design-item">
+                        <div class="img-wrapper">
+                            <img src="image/권은비 축전 표지.png" alt="kon">
+                        </div>
+                        <p>초대가수 축전 표지 디자인</p>
+                        <span class="solo-badge">단독 제작</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-card design-category">
+                <h3>2. 메인 이벤트 기획 및 디지털 홍보물</h3>
+                <p>총학 주최 메인 무대 이벤트 '솔로지만 연애는 하고싶어'를 총괄 기획했으며, 모든 홍보물 디자인은 단독으로 진행했습니다. 이벤트 홍보를 위해 제작된 예고편 영상입니다.</p>
+                
+                <div class="media-container">
+                    <video src="image/솔로지만 예고편.mp4" controls muted loop playsinline poster="image/솔로지만 예고편_thumbnail.jpg">
+                        브라우저가 비디오 태그를 지원하지 않습니다.
+                    </video>
+                    <p style="margin-top: 10px;">이벤트 홍보용 예고편 영상</p>
+                </div>
+                <span class="solo-badge">홍보 디자인 단독 제작</span>
+                <span class="solo-badge" style="background-color: #62a9e0;">이벤트 총괄 기획</span>
+            </div>
+
+            <div class="detail-card design-category">
+                <h3>3. 운영 물품 디자인 (칩 교환 메뉴판)</h3>
+                <p>축제 화폐인 '칩'을 교환하는 부스에서 사용된 메뉴판입니다. 카지노 컨셉에 맞춰 [블랙&화이트]로 깔끔하게 디자인했습니다. (단독 제작)</p>
+                
+                <div class="menu-gallery-wrapper"> <div class="menu-item">
+                        <img src="image/축제 칩 메뉴판 0.jpg" alt="메뉴판 페이지 0">
+                    </div>
+                    <div class="menu-item">
+                        <img src="image/축제 칩 메뉴판 1.jpg" alt="메뉴판 페이지 1">
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 10px;">축제 칩 교환 메뉴판 디자인</p>
+                <p style="text-align: center;"><span class="solo-badge">단독 제작</span></p>
+            </div>
+
+            <div class="detail-card design-category">
+                <h3>4. 협업 디자인 및 기타 홍보물</h3>
+                <p>가로등 배너는 기획부와 컨셉을 공유하며 공동으로 디자인한 작업물입니다. 이 외의 SNS 홍보물(종이팔찌 등)도 제작했습니다.</p>
+                
+                <div class="design-gallery">
+                    <div class="design-item">
+                        <div class="img-wrapper">
+                            <img src="image/가로등배너.jpg" alt="가로등">
+                        </div>
+                        <p>가로등 배너 시안 (기획부와 협업)</p>
+                        <span class="solo-badge" style="background-color: #a74949;">협업 제작</span>
+                    </div>
+                    <div class="design-item">
+                        <div class="img-contain-wrapper">
+                            <img src="image/축제종이팔찌.jpg" alt="종이팔찌">
+                        </div>
+                        <p>종이팔찌</p>
+                        <span class="solo-badge">단독 제작</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const canvas = document.getElementById('tomato-canvas');
+        const ctx = canvas.getContext('2d');
+        const themeToggle = document.getElementById('theme-toggle'); 
+        const body = document.body;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const maxTomatoes = 13; 
+        let tomatoes = [];
+        const tomatoImg = new Image();
+        tomatoImg.src = './image/moon.png'; 
+
+        function Tomato() {
+            this.size = Math.random() * 87 + 65; 
+            this.x = Math.random() * (canvas.width - this.size);
+            this.y = Math.random() * (canvas.height - this.size);
+            this.speedX = (Math.random() - 0.5) * 3; 
+            this.speedY = (Math.random() - 0.5) * 3; 
+            this.rotation = Math.random() * Math.PI * 2; 
+            this.rotationSpeed = (Math.random() - 0.5) * 0.005;
+            this.opacity = Math.random() * 0.05 + 0.5; 
+        }
+
+        Tomato.prototype.draw = function() {
+            ctx.save();
+            ctx.globalAlpha = this.opacity; 
+            ctx.translate(this.x + this.size / 2, this.y + this.size / 2); 
+            ctx.rotate(this.rotation); 
+            ctx.drawImage(tomatoImg, -this.size / 2, -this.size / 2, this.size, this.size);
+            ctx.restore();
+        };
+
+        Tomato.prototype.update = function() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            this.rotation += this.rotationSpeed;
+
+            if (this.x + this.size < 0) this.x = canvas.width;
+            if (this.x > canvas.width) this.x = -this.size;
+            if (this.y + this.size < 0) this.y = canvas.height;
+            if (this.y > canvas.height) this.y = -this.size;
+        };
+
+        function animate() {
+            const isGreenMode = body.classList.contains('color-mode-green');
+            const bgColor = isGreenMode ? 
+                                getComputedStyle(body).getPropertyValue('--green-bg-color') : 
+                                getComputedStyle(body).getPropertyValue('--red-bg-color');
+            
+            ctx.fillStyle = bgColor.trim() || 'white'; 
+            ctx.fillRect(0, 0, canvas.width, canvas.height); 
+
+            for (let i = 0; i < tomatoes.length; i++) {
+                tomatoes[i].update();
+                tomatoes[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+        
+        function applyColorMode(mode) {
+            body.classList.remove('color-mode-red', 'color-mode-green');
+            if (mode === 'green') {
+                body.classList.add('color-mode-green');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> LIGHT'; 
+            } else { 
+                body.classList.add('color-mode-red');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> DARK'; 
+            }
+        }
+
+        const savedColorMode = localStorage.getItem('color-mode');
+        applyColorMode(savedColorMode || 'red'); 
+        
+        themeToggle.addEventListener('click', () => {
+            const currentMode = body.classList.contains('color-mode-green') ? 'green' : 'red';
+            const newMode = currentMode === 'red' ? 'green' : 'red';
+            localStorage.setItem('color-mode', newMode);
+            applyColorMode(newMode);
+        });
+
+        tomatoImg.onload = function() {
+            for (let i = 0; i < maxTomatoes; i++) {
+                tomatoes.push(new Tomato());
+            }
+            animate();
+        };
+        
+        tomatoImg.onerror = function() {
+            console.error("달 이미지 로드 실패: './image/moon.png' 경로를 확인하세요.");
+            if (tomatoes.length === 0) {
+                for (let i = 0; i < maxTomatoes; i++) {
+                    tomatoes.push(new Tomato());
+                }
+            }
+            animate(); 
+        };
+    </script>
+</body>
+</html>
