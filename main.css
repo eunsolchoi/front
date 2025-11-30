@@ -406,126 +406,119 @@ body.color-mode-green .cta-primary:hover {
     color: var(--text-color);
 }
 
+/* ====================================
+    3-1. TECHNICAL SKILLS (스킬 진행률 바)
+==================================== */
 .skills-list {
     list-style: none;
     margin-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    display: block; /* 전체 레이아웃을 블록으로 유지 */
 }
 
-.skills-list li {
-    background-color: var(--text-color);
-    color: var(--bg-color);
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.9em;
-    font-weight: 500;
-}
-body.color-mode-green .skills-list li {
-    background-color: var(--green-card-bg-color);
-    color: var(--text-color);
-}
+/* 기술 카테고리 헤더 (Frontend, Backend 등) */
 .skills-list dt { 
     font-weight: 700;
     color: var(--text-color);
-    padding: 8px 0 0 0; 
+    padding: 15px 0 5px 0; 
     width: 100%;
-    margin-top: 10px;
-    border-top: 1px dashed var(--sub-text-color);
+    margin-top: 20px;
+    font-size: 1.2em;
+    border-bottom: 2px solid var(--text-color); /* 강조선 */
 }
-
 .skills-list dt:first-of-type {
     margin-top: 0;
-    border-top: none;
 }
 
+/* 개별 스킬 항목 (dd) 컨테이너 */
 .skills-list dd {
-    background-color: var(--text-color);
-    color: var(--bg-color);
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.9em;
-    font-weight: 500;
     margin-inline-start: 0; 
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--sub-text-color);
 }
-body.color-mode-green .skills-list dd {
-    background-color: var(--green-card-bg-color);
+.skills-list dd:last-of-type {
+    border-bottom: none;
+}
+
+/* 개별 스킬 항목 (기술명 + 퍼센트) */
+.skill-item {
+    padding: 5px 0;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.skill-header h4 {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.skill-header h4 i {
+    margin-right: 8px;
+    color: var(--text-color); /* 아이콘 색상 */
+}
+
+.skill-percentage {
+    font-size: 1em;
+    font-weight: 700;
     color: var(--text-color);
 }
 
+/* 스킬 바 컨테이너 */
+.skill-bar-container {
+    width: 100%;
+    height: 12px;
+    background-color: var(--sub-text-color); 
+    opacity: 0.5;
+    border-radius: 6px;
+    overflow: hidden;
+}
+body.color-mode-green .skill-bar-container {
+    background-color: var(--green-sub-text-color); 
+}
+
+/* 실제 진행률 바 */
+.skill-bar {
+    height: 100%;
+    width: 0; 
+    transition: width 1.5s ease-out;
+    border-radius: 6px;
+}
+/* ====================================
+스킬 바 개별 색상 설정 (사용자 요청에 의해 수정)
+==================================== */
+
+.skill-bar.skill-react { background-color: #ff0000; }
+.skill-bar.skill-javascript { background-color: #f54a4a; } 
+
+.skill-bar.skill-nodejs { background-color: #fbb800; } 
+.skill-bar.skill-csharp { background-color: #f4ff1d; } 
+.skill-bar.skill-spring { background-color: #87ff50; } 
+.skill-bar.skill-spring-jpa { background-color: #479a0f; } 
+
+.skill-bar.skill-mysql { background-color: #4bd1f0; } 
+.skill-bar.skill-oracle { background-color: #1d58c4; } 
+
+.skill-bar.skill-c { background-color: #00336d; } 
+
+.skill-bar.skill-canva { background-color: #f7e0f4; } 
+.skill-bar.skill-miricanvas { background-color: #ff7dc2; } 
+.skill-bar.skill-jamini { background-color: #fb61f9; } 
+.skill-bar.skill-chatgpt { background-color: #ff19cd; } 
+.skill-bar.skill-kinect { background-color: #8d20c0; } 
+.skill-bar.skill-unity { background-color: #2b163e; } 
 
 /* ====================================
     4. 포트폴리오 섹션
 ==================================== */
 
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px; /* dt와 dd 사이의 간격 */
-    margin-top: 10px;
-}
-
-.skills-list dt {
-    flex-basis: 100%; 
-    font-weight: 700;
-    color: var(--text-color); 
-    margin-top: 15px;
-    font-size: 1.1em;
-    border-bottom: 1px dashed var(--sub-text-color);
-    padding-bottom: 5px;
-}
-
-/* 개별 기술명 (dd) 스타일 */
-.skills-list dd {
-    display: inline-flex;
-    align-items: center;
-    background-color: #f7f7f7;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.95em;
-    font-weight: 400;
-    color: var(--text-color);
-}
-body.color-mode-green .skills-list dd {
-    background-color: #383838;
-    color: var(--text-color);
-}
-
-/* 등급 뱃지 (span) 공통 스타일 */
-.skill-rating {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 20px; 
-    height: 20px;
-    margin-left: 8px; 
-    padding: 0 5px;
-    border-radius: 4px;
-    font-size: 0.75em;
-    font-weight: 700;
-    color: #fff; 
-}
-
-.rating-a {
-/* A등급: 라이트 모드 기본값 */
-    background-color: var(--text-color); /* 검정 */
-    color: #fff; /* 흰색 폰트 */
-}
-
-body.color-mode-green .rating-a {
-    background-color: #f0f0f0; 
-    color: #1D2635; 
-}
-.rating-b {
-    /* B등급: 중간 회색 */
-    background-color: #7a869a; 
-}
-.rating-c {
-    /* C등급: 밝은 회색 */
-    background-color: #B0B0B0; 
-}
-.portfolio-section {
+.portfolio-section { 
     background-color: transparent;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
